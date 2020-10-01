@@ -62,10 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if(this.querySelector('[name=e-mail]').value.indexOf("@") > -1) {
                 errordiv.style.display = 'none';
             return;
-            } else {
-                errordiv.className += 'error-div';
-                errordiv.innerHTML = "Whoops, make sure it´s an email";
-                return;
+            } else if(errordiv.classList.contains('error-div')){
+                    errordiv.classList.remove('error-div');
+                    errordiv.style.display = 'none';
+                    return;
+                } else {
+                    errordiv.className += 'error-div';
+                    errordiv.innerHTML = "Whoops, make sure it´s an email";
+                    errordiv.style.display = 'block';
+                    return;
                 }
              this.submit();
             }
